@@ -2,4 +2,5 @@
 <resources>
     <color name="defaultTextColor">@android:color/black</color>
     <color name="defaultBackgroundColor">@android:color/transparent</color>
+    <color name="colorWhite">@android:color/white</color>
 </resources>

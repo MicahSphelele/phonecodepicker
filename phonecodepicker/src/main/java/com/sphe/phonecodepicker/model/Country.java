@@ -12,22 +12,22 @@ public class Country {
         this.name = name;
     }
 
-     String getIso() {
+    public String getIso() {
         return this.iso;
     }
 
-    String getPhoneCode() {
+   public String getPhoneCode() {
         return this.phoneCode;
     }
 
-     String getName() {
+   public  String getName() {
         return this.name;
     }
 
     /**
      * If country have query word in name or name code or phone code, this will return true.
      */
-    boolean isEligibleForQuery(String query) {
+    public boolean isEligibleForQuery(String query) {
         query = query.toLowerCase();
         return getName().toLowerCase().contains(query) || getIso().toLowerCase().contains(query);
 

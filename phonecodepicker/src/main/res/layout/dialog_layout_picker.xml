@@ -1,59 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dialog_rly"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="8dp">
-
-    <TextView
-        android:id="@+id/title_tv"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="@string/select_country"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/secondary_text_light"
-        />
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/map"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/search_edt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/title_tv"
-        android:hint="@string/search_hint"
-        android:imeOptions="flagNoExtractUi"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:textColor="@android:color/primary_text_light_nodisable"
-        />
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/select_country"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/secondary_text_light"
+            app:layout_constraintStart_toEndOf="@+id/logo"
+            app:layout_constraintTop_toTopOf="@+id/logo" />
 
-    <!--<android.support.v7.widget.RecyclerView-->
-    <!--android:id="@+id/country_dialog_rv"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:layout_below="@+id/search_edt"-->
-    <!--android:dividerHeight="2dp"-->
-    <!--/>-->
+        <EditText
+            android:id="@+id/search_edt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title_tv"
+            android:background="@drawable/edit_txt_border"
+            android:hint="@string/search_hint"
+            android:imeOptions="flagNoExtractUi"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:layout_marginTop="8dp"
+            android:textColor="@android:color/primary_text_light_nodisable"
+            app:layout_constraintTop_toBottomOf="@+id/logo"
+            tools:layout_editor_absoluteX="8dp" />
 
-    <ListView
-        android:id="@+id/country_dialog_lv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/search_edt"
-        android:dividerHeight="2dp"/>
+        <ListView
+            android:id="@+id/country_dialog_lv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@+id/search_edt"
+            android:dividerHeight="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_edt" />
 
-    <TextView
-        android:id="@+id/no_result_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/search_edt"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:text="@string/no_result_found"
-        android:textColor="@android:color/primary_text_light"
-        android:visibility="gone"
-        />
+        <TextView
+            android:id="@+id/no_result_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/no_result_found"
+            android:textColor="@android:color/primary_text_light"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </RelativeLayout>
