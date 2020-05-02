@@ -4,7 +4,7 @@
 </p>
 An open source experimental repository for android libraries that will be compatible with Java and Kotlin  
 
-How to add library into your project
+How to get started 
 --------------
 
 1. Add jitpack.io to your root build.gradle file:
