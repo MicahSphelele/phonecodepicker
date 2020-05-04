@@ -21,7 +21,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.sphe.phonecodepicker.R;
-import com.sphe.phonecodepicker.model.Country;
+import com.sphe.phonecodepicker.models.Country;
 import com.sphe.phonecodepicker.utils.CountryUtils;
 
 import java.util.ArrayList;

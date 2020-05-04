@@ -13,19 +13,22 @@
         android:layout_height="match_parent">
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="40dp"
+            android:layout_width="30dp"
             android:layout_height="40dp"
             android:src="@drawable/map"
             android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/desc_image_drawable" />
 
         <TextView
             android:id="@+id/title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:text="@string/select_country"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@android:color/secondary_text_light"
@@ -48,16 +51,25 @@
             app:layout_constraintTop_toBottomOf="@+id/logo"
             tools:layout_editor_absoluteX="8dp" />
 
-        <ListView
+<!--        <ListView-->
+<!--            android:id="@+id/country_dialog_lv"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_below="@+id/search_edt"-->
+<!--            android:dividerHeight="2dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/search_edt" />-->
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/country_dialog_lv"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_below="@+id/search_edt"
-            android:dividerHeight="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/search_edt" />
+            app:layout_constraintTop_toBottomOf="@+id/search_edt"
+            />
 
         <TextView
             android:id="@+id/no_result_tv"

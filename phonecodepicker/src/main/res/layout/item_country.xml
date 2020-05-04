@@ -8,6 +8,7 @@
     android:background="?android:attr/selectableItemBackground"
     android:id="@+id/item_country_rly">
 
+
 <!--    <LinearLayout-->
 <!--        android:id="@+id/flag_holder_lly"-->
 <!--        android:layout_width="40dp"-->
@@ -35,13 +36,14 @@
 
     <TextView
         android:id="@+id/country_name_tv"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toStartOf="@+id/code_tv"
         android:gravity="center_vertical"
         android:textColor="@android:color/secondary_text_light"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/code_tv"
         app:layout_constraintStart_toEndOf="@+id/flag_imv"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="South Africa (RSA)" />

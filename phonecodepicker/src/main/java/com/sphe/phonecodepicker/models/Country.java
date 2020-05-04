@@ -1,4 +1,4 @@
-package com.sphe.phonecodepicker.model;
+package com.sphe.phonecodepicker.models;
 
 public class Country {
 

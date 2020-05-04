@@ -3,7 +3,7 @@ package com.sphe.phonecodepicker.utils;
 import android.content.Context;
 
 import com.sphe.phonecodepicker.R;
-import com.sphe.phonecodepicker.model.Country;
+import com.sphe.phonecodepicker.models.Country;
 
 import java.io.BufferedReader;
 import java.io.IOException;
