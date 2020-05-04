@@ -13,7 +13,7 @@
         android:layout_height="match_parent">
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/map"
             android:layout_marginTop="8dp"
@@ -27,8 +27,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:text="@string/select_country"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@android:color/secondary_text_light"
