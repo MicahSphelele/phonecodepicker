@@ -579,6 +579,8 @@ public class CountryCodePicker extends RelativeLayout {
         setDefaultCountry(defaultCountry);
     }
 
+
+    @SuppressWarnings("unused")
     public void setDefaultCountryUsingPhoneCodeAndApply(int defaultCountryCode) {
         Country defaultCountry =
                 CountryUtils.getByCode(getContext(), mPreferredCountries, defaultCountryCode);
@@ -623,6 +625,7 @@ public class CountryCodePicker extends RelativeLayout {
      * if you want to set IN +91(India) as default country, countryIso =  "IN" or "in"
      * if you want to set JP +81(Japan) as default country, countryIso =  "JP" or "jp"
      */
+    @SuppressWarnings("unused")
     public void setDefaultCountryUsingNameCodeAndApply(String countryIso) {
         Country defaultCountry = CountryUtils.getByNameCodeFromAllCountries(getContext(), countryIso);
 
@@ -1187,7 +1190,7 @@ public class CountryCodePicker extends RelativeLayout {
 
         //TODO solve it! support for android kitkat
         @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-        public PhoneNumberWatcher(String countryCode) {
+         PhoneNumberWatcher(String countryCode) {
             super(countryCode);
             previousCountryCode = countryCode;
         }
@@ -1198,12 +1201,14 @@ public class CountryCodePicker extends RelativeLayout {
                 String iso = null;
                 if (mSelectedCountry != null) iso = mSelectedCountry.getPhoneCode().toUpperCase();
                 Phonenumber.PhoneNumber phoneNumber = mPhoneUtil.parse(s.toString(), iso);
+                //noinspection UnusedAssignment
                 iso = mPhoneUtil.getRegionCodeForNumber(phoneNumber);
-                if (iso != null) {//TODO(Sort out this if)
+               /* if (iso != null) {//TODO(Sort out this if)
                     //int countryIdx = mCountries.indexOfIso(iso);
                     //mCountrySpinner.setSelection(countryIdx);
-                }
-            } catch (NumberParseException ignored) {
+                }*/
+            } catch (NumberParseException ex) {
+                ex.printStackTrace();
             }
 
             if (mPhoneNumberInputValidityListener != null) {
