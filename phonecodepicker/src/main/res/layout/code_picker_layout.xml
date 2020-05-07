@@ -12,12 +12,15 @@
         android:layout_height="wrap_content"
         android:padding="8dp"
         android:background="?android:attr/selectableItemBackground"
-        android:gravity="center">
+        android:gravity="center"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:id="@+id/flag_holder_lly"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/arrow_imv"
             android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="@dimen/google_1x">
@@ -31,7 +34,6 @@
                 android:contentDescription="@string/desc_country_flag" />
         </LinearLayout>
 
-        <!--</LinearLayout>-->
         <TextView
             android:id="@+id/selected_country_tv"
             android:layout_width="wrap_content"
@@ -50,10 +52,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/selected_country_tv"
             android:adjustViewBounds="true"
             android:alpha="0.6"
-            android:layout_marginStart="8dp"
             android:src="@drawable/arrow_down"
             android:tint="@android:color/black"
             android:contentDescription="@string/desc_action_arrow" />

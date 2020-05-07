@@ -12,4 +12,5 @@
     <string name="error_unregister_carrier_number" translatable="false">EditText for carrier number is not registered. Register it using registerPhoneNumberTextView() before getFullNumber() or setFullNumber().</string>
     <string name="desc_country_flag">Country Flag Image</string>
     <string name="desc_action_arrow">Action Arrow</string>
+    <string name="desc_image_drawable">Image Drawable</string>
 </resources>
