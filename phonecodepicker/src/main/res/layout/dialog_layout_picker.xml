@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="8dp">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -49,16 +50,6 @@
             app:layout_constraintTop_toBottomOf="@+id/logo"
             tools:layout_editor_absoluteX="8dp" />
 
-<!--        <ListView-->
-<!--            android:id="@+id/country_dialog_lv"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_below="@+id/search_edt"-->
-<!--            android:dividerHeight="2dp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/search_edt" />-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/country_dialog_lv"
             android:layout_width="0dp"

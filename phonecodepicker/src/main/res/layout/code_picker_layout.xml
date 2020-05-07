@@ -8,8 +8,8 @@
 
     <RelativeLayout
         android:id="@+id/click_consumer_rly"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:padding="8dp"
         android:background="?android:attr/selectableItemBackground"
         android:gravity="center">
@@ -31,7 +31,6 @@
                 android:contentDescription="@string/desc_country_flag" />
         </LinearLayout>
 
-        <!--</LinearLayout>-->
         <TextView
             android:id="@+id/selected_country_tv"
             android:layout_width="wrap_content"
