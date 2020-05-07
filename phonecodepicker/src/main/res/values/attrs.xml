@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
         <declare-styleable name="CountryCodePicker">
-            <attr format="integer" name="pcp_defaultCode"/>
-            <attr format="color" name="pcp_textColor"/>
-            <attr format="color" name="pcp_backgroundColor"/>
-            <attr format="dimension" name="pcp_textSize"/>
-            <attr format="string" name="pcp_textFont"/>
-            <attr format="dimension" name="pcp_arrowSize"/>
-            <attr format="string" name="pcp_countryPreference"/>
-            <attr format="string" name="pcp_defaultNameCode"/>
-            <attr format="boolean" name="pcp_hideNameCode"/>
-            <attr format="boolean" name="pcp_keyboardAutoPopOnSearch"/>
-            <attr format="string" name="pcp_customMasterCountries"/>
-            <attr format="boolean" name="pcp_showFlag"/>
-            <attr format="boolean" name="pcp_showFullName"/>
-            <attr format="boolean" name="pcp_selectionDialogShowSearch"/>
-            <attr format="boolean" name="pcp_clickable"/>
-            <attr format="boolean" name="pcp_hidePhoneCode"/>
-            <attr format="boolean" name="pcp_enableHint"/>
-            <attr format="boolean" name="pcp_enablePhoneAutoFormatter"/>
-            <attr format="boolean" name="pcp_setCountryByTimeZone"/>
+            <attr format="integer" name="picker_defaultCode"/>
+            <attr format="color" name="picker_textColor"/>
+            <attr format="color" name="picker_backgroundColor"/>
+            <attr format="dimension" name="picker_textSize"/>
+            <attr format="string" name="picker_textFont"/>
+            <attr format="dimension" name="picker_arrowSize"/>
+            <attr format="string" name="picker_countryPreference"/>
+            <attr format="string" name="picker_defaultNameCode"/>
+            <attr format="boolean" name="picker_hideNameCode"/>
+            <attr format="boolean" name="picker_keyboardAutoPopOnSearch"/>
+            <attr format="string" name="picker_customMasterCountries"/>
+            <attr format="boolean" name="picker_showFlag"/>
+            <attr format="boolean" name="picker_showFullName"/>
+            <attr format="boolean" name="picker_selectionDialogShowSearch"/>
+            <attr format="boolean" name="picker_clickable"/>
+            <attr format="boolean" name="picker_hidePhoneCode"/>
+            <attr format="boolean" name="picker_enableHint"/>
+            <attr format="boolean" name="picker_enablePhoneAutoFormatter"/>
+            <attr format="boolean" name="picker_setCountryByTimeZone"/>
             <!--For dialog-->
             <attr format="color" name="pcp_dialogTextColor"/>
         </declare-styleable>
