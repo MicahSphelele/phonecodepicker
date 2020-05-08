@@ -27,3 +27,7 @@ Phone code picker will provide a proffesional and seamless look into your UI whe
 
 <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/snippet_edit.jpg" width="300" height="90">
 
+### How to add to project 
+
+
+
