@@ -19,15 +19,25 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         countryPicker.dialogMode = CountryCodePicker.DIALOG_MODE_DIALOG
-        
-        text.text = String.format("%s | %s",countryPicker.selectedCountryName,countryPicker.selectedCountryCode)
-        countryPicker.registerPhoneNumberTextView(edtText)
+        btnSwitch.isChecked = true
 
+        text.text = String.format("%s | %s",countryPicker.selectedCountryName,countryPicker.selectedCountryCode)
+
+        countryPicker.registerPhoneNumberTextView(edtText)
         countryPicker.setOnCountryChangeListener {country ->
             text.text = String.format("%s | %s",country.name,country.phoneCode)
         }
 
-
-
+        btnSwitch.setOnCheckedChangeListener { _, isChecked ->
+            when(isChecked){
+                true ->{
+                    countryPicker.dialogMode = CountryCodePicker.DIALOG_MODE_DIALOG
+                }
+                false->{
+                    countryPicker.dialogMode = CountryCodePicker.DIALOG_MODE_FULL
+                }
+            }
+        }
+        
     }
 }
