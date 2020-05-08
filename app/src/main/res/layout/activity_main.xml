@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         app:picker_hideNameCode="true"
+        app:picker_keyboardAutoPopOnSearch="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/edtText"
         app:layout_constraintHorizontal_bias="0.3"

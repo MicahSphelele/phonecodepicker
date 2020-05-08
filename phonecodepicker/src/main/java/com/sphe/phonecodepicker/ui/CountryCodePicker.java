@@ -15,10 +15,14 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.fragment.app.FragmentManager;
 
 import com.sphe.phonecodepicker.R;
 import com.sphe.phonecodepicker.models.Country;
@@ -35,8 +39,11 @@ import io.michaelrocks.libphonenumber.android.PhoneNumberUtil;
 import io.michaelrocks.libphonenumber.android.Phonenumber;
 
 public class CountryCodePicker extends RelativeLayout {
-    private static String TAG = CountryCodePicker.class.getSimpleName();
 
+    public static final int DIALOG_MODE_DIALOG = 0;
+    public static final int DIALOG_MODE_FULL = 1;
+
+    private static String TAG = CountryCodePicker.class.getSimpleName();
     private final String DEFAULT_COUNTRY = Locale.getDefault().getCountry();
     private static final String DEFAULT_ISO_COUNTRY = "ID";
     private static final int DEFAULT_TEXT_COLOR = 0;
@@ -52,11 +59,11 @@ public class CountryCodePicker extends RelativeLayout {
     private PhoneNumberWatcher mPhoneNumberWatcher;
     PhoneNumberInputValidityListener mPhoneNumberInputValidityListener;
 
-    private TextView mTvSelectedCountry;
+    private AppCompatTextView mTvSelectedCountry;
     private TextView mRegisteredPhoneNumberTextView;
     private RelativeLayout mRlyHolder;
-    private ImageView mImvArrow;
-    private ImageView mImvFlag;
+    private AppCompatImageView mImvArrow;
+    private AppCompatImageView mImvFlag;
     private LinearLayout mLlyFlagHolder;
     private Country mSelectedCountry;
     private Country mDefaultCountry;
@@ -67,7 +74,6 @@ public class CountryCodePicker extends RelativeLayout {
     private boolean mShowFullName = false;
     //private boolean mUseFullName = false;
     private boolean mSelectionDialogShowSearch = true;
-
     private List<Country> mPreferredCountries;
     //this will be "AU,ID,US"
     private String mCountryPreference;
@@ -79,11 +85,9 @@ public class CountryCodePicker extends RelativeLayout {
     private CountryCodeDialog mCountryCodeDialog;
 
     private boolean mHidePhoneCode = false;
-
     private int mTextColor = DEFAULT_TEXT_COLOR;
-
     private int mDialogTextColor = DEFAULT_TEXT_COLOR;
-
+    private int dialogMode = DIALOG_MODE_DIALOG;
     // Font typeface
     private Typeface mTypeFace;
 
@@ -93,6 +97,8 @@ public class CountryCodePicker extends RelativeLayout {
     private boolean mSetCountryByTimeZone = true;
 
     private OnCountryChangeListener mOnCountryChangeListener;
+
+    private CountryCodeDialogFull mCountryCodeDialogFull;
 
     /**
      * interface to set change listener
@@ -134,9 +140,8 @@ public class CountryCodePicker extends RelativeLayout {
         init(attrs);
     }
 
-    private void init(AttributeSet attrs) {
+    private void init(final AttributeSet attrs) {
         inflate(getContext(), R.layout.code_picker_layout, this);
-
         mTvSelectedCountry = findViewById(R.id.selected_country_tv);
         mRlyHolder = findViewById(R.id.country_code_holder_rly);
         mImvArrow = findViewById(R.id.arrow_imv);
@@ -149,7 +154,14 @@ public class CountryCodePicker extends RelativeLayout {
         mCountryCodeHolderClickListener = new View.OnClickListener() {
             @Override public void onClick(View v) {
                 if (isClickable()) {
-                    showCountryCodePickerDialog();
+                    switch (getDialogMode()){
+                        case DIALOG_MODE_DIALOG:
+                            showCountryCodePickerDialog();
+                            break;
+                        case DIALOG_MODE_FULL:
+                            showCountryCodePickerDialogFull();
+                            break;
+                    }
                 }
             }
         };
@@ -168,10 +180,11 @@ public class CountryCodePicker extends RelativeLayout {
             mHideNameCode = a.getBoolean(R.styleable.CountryCodePicker_picker_hideNameCode, false);
 
             mIsHintEnabled = a.getBoolean(R.styleable.CountryCodePicker_picker_enableHint, true);
-
+            //Set and Get fullscreen mode
+            setDialogMode(a.getInt(R.styleable.CountryCodePicker_picker_DialogMode,0));
+            //useFullScreenMode = a.getBoolean(R.styleable.CountryCodePicker_picker_useFullScreen,false);
             // enable auto formatter for phone number input
-            mIsEnablePhoneNumberWatcher =
-                    a.getBoolean(R.styleable.CountryCodePicker_picker_enablePhoneAutoFormatter, true);
+            mIsEnablePhoneNumberWatcher = a.getBoolean(R.styleable.CountryCodePicker_picker_enablePhoneAutoFormatter, true);
 
             setKeyboardAutoPopOnSearch(
                     a.getBoolean(R.styleable.CountryCodePicker_picker_keyboardAutoPopOnSearch, true));
@@ -261,7 +274,7 @@ public class CountryCodePicker extends RelativeLayout {
         }
         if (textColor != 0) setTextColor(textColor);
 
-        mDialogTextColor =  arr.getColor(R.styleable.CountryCodePicker_pcp_dialogTextColor, DEFAULT_TEXT_COLOR);
+        mDialogTextColor =  arr.getColor(R.styleable.CountryCodePicker_picker_dialogTextColor, DEFAULT_TEXT_COLOR);
 
         // background color of view.
         mBackgroundColor = arr.getColor(R.styleable.CountryCodePicker_picker_backgroundColor, Color.TRANSPARENT);
@@ -569,8 +582,7 @@ public class CountryCodePicker extends RelativeLayout {
      * if you want to set JP +81(Japan) as default country, mDefaultCountryCode =  81
      */
     @Deprecated public void setDefaultCountryUsingPhoneCode(int defaultCountryCode) {
-        Country defaultCountry =
-                CountryUtils.getByCode(getContext(), mPreferredCountries, defaultCountryCode);
+        Country defaultCountry = CountryUtils.getByCode(getContext(), mPreferredCountries, defaultCountryCode);
 
         if (defaultCountry == null) return;
 
@@ -582,8 +594,7 @@ public class CountryCodePicker extends RelativeLayout {
 
     @SuppressWarnings("unused")
     public void setDefaultCountryUsingPhoneCodeAndApply(int defaultCountryCode) {
-        Country defaultCountry =
-                CountryUtils.getByCode(getContext(), mPreferredCountries, defaultCountryCode);
+        Country defaultCountry = CountryUtils.getByCode(getContext(), mPreferredCountries, defaultCountryCode);
 
         if (defaultCountry == null) return;
 
@@ -1165,8 +1176,7 @@ public class CountryCodePicker extends RelativeLayout {
         if (BuildConfig.DEBUG) {
             Log.d(TAG, "setPhoneNumberHint called");
             Log.d(TAG, "mSelectedCountry.getIso() = " + mSelectedCountry.getIso());
-            Log.d(TAG,
-                    "hint = " + mPhoneUtil.format(phoneNumber, PhoneNumberUtil.PhoneNumberFormat.NATIONAL));
+            Log.d(TAG,"hint = " + mPhoneUtil.format(phoneNumber, PhoneNumberUtil.PhoneNumberFormat.NATIONAL));
         }
 
         String hint = mPhoneUtil.format(phoneNumber, PhoneNumberUtil.PhoneNumberFormat.NATIONAL);
@@ -1389,5 +1399,23 @@ public class CountryCodePicker extends RelativeLayout {
     public void showCountryCodePickerDialog() {
         if (mCountryCodeDialog == null) mCountryCodeDialog = new CountryCodeDialog(this);
         mCountryCodeDialog.show();
+    }
+
+    public void setDialogMode(int mode){
+       this.dialogMode = mode;
+    }
+
+    public int getDialogMode(){
+        return this.dialogMode;
+    }
+
+    private void showCountryCodePickerDialogFull(){
+        FragmentManager fragmentManager = ((AppCompatActivity) getContext()).getSupportFragmentManager();
+        if(mCountryCodeDialogFull==null){
+            mCountryCodeDialogFull = new CountryCodeDialogFull(this);
+            mCountryCodeDialogFull.show(fragmentManager,"mCountryCodeDialogFull");
+        }else{
+            mCountryCodeDialogFull.show(fragmentManager,"mCountryCodeDialogFull");
+        }
     }
 }

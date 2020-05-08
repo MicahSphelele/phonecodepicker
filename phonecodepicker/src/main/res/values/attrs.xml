@@ -20,7 +20,11 @@
             <attr format="boolean" name="picker_enableHint"/>
             <attr format="boolean" name="picker_enablePhoneAutoFormatter"/>
             <attr format="boolean" name="picker_setCountryByTimeZone"/>
+            <attr name="picker_DialogMode">
+                <flag name="dialog" value="0"/>
+                <flag name="full_dialog" value="1"/>
+            </attr>
             <!--For dialog-->
-            <attr format="color" name="pcp_dialogTextColor"/>
+            <attr format="color" name="picker_dialogTextColor"/>
         </declare-styleable>
 </resources>

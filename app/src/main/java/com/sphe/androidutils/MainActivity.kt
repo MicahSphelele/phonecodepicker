@@ -1,7 +1,11 @@
 package com.sphe.androidutils
 
 import android.os.Bundle
+
 import androidx.appcompat.app.AppCompatActivity
+
+import com.sphe.phonecodepicker.ui.CountryCodePicker
+
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,11 +18,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        countryPicker.dialogMode = CountryCodePicker.DIALOG_MODE_DIALOG
+        
         text.text = String.format("%s | %s",countryPicker.selectedCountryName,countryPicker.selectedCountryCode)
         countryPicker.registerPhoneNumberTextView(edtText)
 
         countryPicker.setOnCountryChangeListener {country ->
             text.text = String.format("%s | %s",country.name,country.phoneCode)
         }
+
+
+
     }
 }
