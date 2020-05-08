@@ -19,7 +19,7 @@ How to get started
     ````
 ## Phone Code Picker 
 
-Phone code picker is a simple and easy to use picker, which makes it easier to select and search for a country code for a mobile number. The library is supports API level 17 and up
+Phone code picker is a simple and easy to use picker, which makes it easier to select and search for a country code for a mobile number. The library is supports API level 17 and up. The reason I wrote this library was for me to add a few new features and also implement a `RecyclerView` instead of `ListView`
 
 <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/snippet.jpg" width="100" height="50">
 
@@ -83,7 +83,7 @@ Library Features
 What inspired me from re-wrtting this library was this feature
 
 ### 1. Dialog Mode
-* You can pick how you want to view the list from countries by using two different modes full_dialog or dialog
+* You can pick how you want to view the list from countries by using two different modes `full_dialog` or `dialog`
 * NB: dialog mode is alway default
   #### A. Through xml
    ##### Using dialog mode
