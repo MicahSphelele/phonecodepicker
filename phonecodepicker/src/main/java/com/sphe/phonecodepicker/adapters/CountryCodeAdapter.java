@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sphe.phonecodepicker.R;
 import com.sphe.phonecodepicker.models.Country;
-import com.sphe.phonecodepicker.ui.CountryCodePicker;
+import com.sphe.phonecodepicker.ui.PhoneCodePicker;
 import com.sphe.phonecodepicker.utils.CountryUtils;
 
 import java.util.List;
@@ -21,12 +21,12 @@ import java.util.List;
 public class CountryCodeAdapter extends RecyclerView.Adapter<CountryCodeAdapter.CountryViewHolder>{
 
     private List<Country> list;
-    private CountryCodePicker mCountryCodePicker;
+    private PhoneCodePicker mPhoneCodePicker;
     private OnCountryClickListener listener;
 
-    public CountryCodeAdapter(List<Country> list, CountryCodePicker countryCodePicker) {
+    public CountryCodeAdapter(List<Country> list, PhoneCodePicker mPhoneCodePicker) {
         this.list = list;
-        this.mCountryCodePicker = countryCodePicker;
+        this.mPhoneCodePicker = mPhoneCodePicker;
     }
 
     @NonNull
@@ -65,27 +65,27 @@ public class CountryCodeAdapter extends RecyclerView.Adapter<CountryCodeAdapter.
             String iso = country.getIso().toUpperCase();
             String countryNameAndCode;
 
-            if (mCountryCodePicker.isHideNameCode()) {
+            if (mPhoneCodePicker.isHideNameCode()) {
                 countryNameAndCode = name;
             } else {
                 countryNameAndCode = context.getString(R.string.country_name_and_code, name, iso);
             }
             holder.txtCountryName.setText(countryNameAndCode);
 
-            if (mCountryCodePicker.isHidePhoneCode()) {
+            if (mPhoneCodePicker.isHidePhoneCode()) {
                 holder.txtCountryCode.setVisibility(View.GONE);
             } else {
                 holder.txtCountryCode.setText(context.getString(R.string.phone_code, country.getPhoneCode()));
             }
 
-            Typeface typeface = mCountryCodePicker.getTypeFace();
+            Typeface typeface = mPhoneCodePicker.getTypeFace();
             if (typeface != null) {
                 holder.txtCountryCode.setTypeface(typeface);
                 holder.txtCountryName.setTypeface(typeface);
             }
             holder.imageFlag.setImageResource(CountryUtils.getFlagDrawableResId(country));
-            int color = mCountryCodePicker.getDialogTextColor();
-            if (color != mCountryCodePicker.getDefaultContentColor()) {
+            int color = mPhoneCodePicker.getDialogTextColor();
+            if (color != mPhoneCodePicker.getDefaultContentColor()) {
                 holder.txtCountryCode.setTextColor(color);
                 holder.txtCountryName.setTextColor(color);
             }

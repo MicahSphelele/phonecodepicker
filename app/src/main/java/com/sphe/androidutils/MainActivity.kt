@@ -1,10 +1,11 @@
 package com.sphe.androidutils
 
 import android.os.Bundle
+import android.util.Log
 
 import androidx.appcompat.app.AppCompatActivity
 
-import com.sphe.phonecodepicker.ui.CountryCodePicker
+import com.sphe.phonecodepicker.ui.PhoneCodePicker
 
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -18,26 +19,27 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        countryPicker.dialogMode = CountryCodePicker.DIALOG_MODE_DIALOG
+
+        picker.dialogMode = PhoneCodePicker.DIALOG_MODE_DIALOG
         btnSwitch.isChecked = true
 
-        text.text = String.format("%s | %s",countryPicker.selectedCountryName,countryPicker.selectedCountryCode)
+        text.text = String.format("%s | %s",picker.selectedCountryName,picker.selectedCountryCode)
 
-        countryPicker.registerPhoneNumberTextView(edtText)
-        countryPicker.setOnCountryChangeListener {country ->
+        picker.registerPhoneNumberTextView(edtText)
+        picker.setOnCountryChangeListener {country ->
             text.text = String.format("%s | %s",country.name,country.phoneCode)
+            Log.d(TAG,country.name)
         }
 
         btnSwitch.setOnCheckedChangeListener { _, isChecked ->
             when(isChecked){
                 true ->{
-                    countryPicker.dialogMode = CountryCodePicker.DIALOG_MODE_DIALOG
+                    picker.dialogMode = PhoneCodePicker.DIALOG_MODE_DIALOG
                 }
                 false->{
-                    countryPicker.dialogMode = CountryCodePicker.DIALOG_MODE_FULL
+                    picker.dialogMode = PhoneCodePicker.DIALOG_MODE_FULL
                 }
             }
         }
-        
     }
 }
