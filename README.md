@@ -30,8 +30,8 @@ Phone code picker will provide a proffesional and seamless look into your UI whe
 ### How to add to project 
 1. Add library to your project build.gradle file and then sync 
 ````groovy
-dependencies {
-	        implementation 'com.github.MicahSphelele:android-utils:phonecodepicker:1.0.0-beta'
+	dependencies {
+	   implementation 'com.github.MicahSphelele:android-utils:phonecodepicker:1.0.0-beta'
 	}
 ````
 
