@@ -20,4 +20,4 @@ How to get started
 ## Phone Code Picker
 
 Phone code picker is a simple and easy to use picker, which makes it easier to select and search for a country code for a mobile number.
-<img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/snippet.jpg" width="50" height="50">
+<img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/snippet.jpg" width="100" height="50">
