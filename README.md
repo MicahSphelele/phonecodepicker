@@ -95,7 +95,7 @@ What inspired me from re-wrtting this library was this feature
     Use `setDialogMode(PhoneCodePicker.DIALOG_MODE_DIALOG)` method.
 
 <p align="center">
-  <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/full_dialog.jpg" width="400" height="500">\
- <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/dialog.jpg" width="400" height="500">
+  <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/full_dialog.jpg" width="400" height="500">\
+ <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/dialog.jpg" width="400" height="500">
 </p>
     
