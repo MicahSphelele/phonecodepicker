@@ -25,5 +25,5 @@ Phone code picker is a simple and easy to use picker, which makes it easier to s
 
 Phone code picker will provide a proffesional and seamless look into your UI whether you want to use it for a sign up screen or a sign screen. 
 
-<img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/snippet_edit.jpg" width="100" height="50">
+<img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/snippet_edit.jpg" >
 
