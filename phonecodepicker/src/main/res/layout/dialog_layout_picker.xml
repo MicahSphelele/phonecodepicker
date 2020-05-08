@@ -12,55 +12,63 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ImageView
+
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/logo"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/map"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/desc_image_drawable"
+            app:layout_constraintEnd_toStartOf="@+id/title_tv"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/desc_image_drawable" />
+            app:srcCompat="@drawable/map" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:text="@string/select_country"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@android:color/secondary_text_light"
-            app:layout_constraintStart_toEndOf="@+id/logo"
+            app:layout_constraintBottom_toBottomOf="@+id/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/logo" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/search_edt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/title_tv"
             android:background="@drawable/edit_txt_border"
+            android:autofillHints="country"
+            android:inputType="text"
             android:hint="@string/search_hint"
             android:imeOptions="flagNoExtractUi"
             android:maxLines="1"
             android:padding="10dp"
             android:singleLine="true"
             android:layout_marginTop="8dp"
+            android:textColorHint="@color/defaultTextColor"
             android:textColor="@android:color/primary_text_light_nodisable"
             app:layout_constraintTop_toBottomOf="@+id/logo"
-            tools:layout_editor_absoluteX="8dp" />
+             />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/country_dialog_lv"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_country"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/search_edt"
             />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/no_result_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

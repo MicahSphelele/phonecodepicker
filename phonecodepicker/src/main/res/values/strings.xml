@@ -4,13 +4,13 @@
     <string name="country_name_and_code" translatable="false">%1$s (%2$s)</string>
     <string name="search_hint">Search&#8230;</string>
     <string name="no_result_found">No result found</string>
-    <string name="select_country">Select Country</string>
+    <string name="select_country">Select Country Code</string>
     <string name="country_code_and_phone_code" translatable="false">(%1$s) +%2$s</string>
     <string name="country_full_name_and_phone_code" translatable="false">%1$s +%2$s</string>
     <string name="country_full_name_and_name_code" translatable="false">%1$s (%2$s)</string>
     <string name="country_full_name_name_code_and_phone_code" translatable="false">%1$s (%2$s) +%3$s</string>
     <string name="error_unregister_carrier_number" translatable="false">EditText for carrier number is not registered. Register it using registerPhoneNumberTextView() before getFullNumber() or setFullNumber().</string>
-    <string name="desc_country_flag">Country Flag Image</string>
-    <string name="desc_action_arrow">Action Arrow</string>
-    <string name="desc_image_drawable">Image Drawable</string>
+    <string name="desc_country_flag" translatable="false">Country Flag Image</string>
+    <string name="desc_action_arrow" translatable="false">Action Arrow</string>
+    <string name="desc_image_drawable" translatable="false">Image Drawable</string>
 </resources>

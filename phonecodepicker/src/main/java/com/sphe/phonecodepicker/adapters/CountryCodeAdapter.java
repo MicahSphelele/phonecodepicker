@@ -5,10 +5,10 @@ import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sphe.phonecodepicker.R;
@@ -101,9 +101,9 @@ public class CountryCodeAdapter extends RecyclerView.Adapter<CountryCodeAdapter.
 
     static class CountryViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView imageFlag;
-        TextView txtCountryName;
-        TextView txtCountryCode;
+        AppCompatImageView imageFlag;
+        AppCompatTextView txtCountryName;
+        AppCompatTextView txtCountryCode;
         View divider;
 
          CountryViewHolder(@NonNull View v) {
