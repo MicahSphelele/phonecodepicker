@@ -28,6 +28,12 @@ Phone code picker will provide a proffesional and seamless look into your UI whe
 <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/snippet_edit.jpg" width="300" height="90">
 
 ### How to add to project 
+1. Add library to your project build.gradle file and then sync 
+````groovy
+dependencies {
+	        implementation 'com.github.MicahSphelele:android-utils:phonecodepicker:1.0.0-beta'
+	}
+````
 
 
 
