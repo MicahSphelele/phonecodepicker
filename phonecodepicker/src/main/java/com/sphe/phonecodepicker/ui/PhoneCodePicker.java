@@ -38,12 +38,12 @@ import io.michaelrocks.libphonenumber.android.NumberParseException;
 import io.michaelrocks.libphonenumber.android.PhoneNumberUtil;
 import io.michaelrocks.libphonenumber.android.Phonenumber;
 
-public class CountryCodePicker extends RelativeLayout {
+public class PhoneCodePicker extends RelativeLayout {
 
     public static final int DIALOG_MODE_DIALOG = 0;
     public static final int DIALOG_MODE_FULL = 1;
 
-    private static String TAG = CountryCodePicker.class.getSimpleName();
+    private static String TAG = PhoneCodePicker.class.getSimpleName();
     private final String DEFAULT_COUNTRY = Locale.getDefault().getCountry();
     private static final String DEFAULT_ISO_COUNTRY = "ID";
     private static final int DEFAULT_TEXT_COLOR = 0;
@@ -82,7 +82,7 @@ public class CountryCodePicker extends RelativeLayout {
     private String mCustomMasterCountries;
     private boolean mKeyboardAutoPopOnSearch = true;
     private boolean mIsClickable = true;
-    private CountryCodeDialog mCountryCodeDialog;
+    private PhoneCodeDialog mCountryCodeDialog;
 
     private boolean mHidePhoneCode = false;
     private int mTextColor = DEFAULT_TEXT_COLOR;
@@ -98,7 +98,7 @@ public class CountryCodePicker extends RelativeLayout {
 
     private OnCountryChangeListener mOnCountryChangeListener;
 
-    private CountryCodeDialogFull mCountryCodeDialogFull;
+    private PhoneCodeDialogFull mCountryCodeDialogFull;
 
     /**
      * interface to set change listener
@@ -111,22 +111,22 @@ public class CountryCodePicker extends RelativeLayout {
      * Interface for checking when phone number checker validity is finish.
      */
     public interface PhoneNumberInputValidityListener {
-        void onFinish(CountryCodePicker ccp, boolean isValid);
+        void onFinish(PhoneCodePicker ccp, boolean isValid);
     }
 
-    public CountryCodePicker(Context context) {
+    public PhoneCodePicker(Context context) {
         super(context);
         //if (!isInEditMode())
         init(null);
     }
 
-    public CountryCodePicker(Context context, AttributeSet attrs) {
+    public PhoneCodePicker(Context context, AttributeSet attrs) {
         super(context, attrs);
         //if (!isInEditMode())
         init(attrs);
     }
 
-    public CountryCodePicker(Context context, AttributeSet attrs, int defStyleAttr) {
+    public PhoneCodePicker(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         //if (!isInEditMode())
         init(attrs);
@@ -134,7 +134,7 @@ public class CountryCodePicker extends RelativeLayout {
 
     @SuppressWarnings("unused")
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public CountryCodePicker(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public PhoneCodePicker(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         //if (!isInEditMode())
         init(attrs);
@@ -484,7 +484,7 @@ public class CountryCodePicker extends RelativeLayout {
      * @param codePicker picker for the source of country
      * @return List of country
      */
-    List<Country> getCustomCountries(CountryCodePicker codePicker) {
+    List<Country> getCustomCountries(PhoneCodePicker codePicker) {
         codePicker.refreshCustomMasterList();
         if (codePicker.getCustomCountries() == null || codePicker.getCustomCountries().size() <= 0) {
             return CountryUtils.getAllCountries(codePicker.getContext());
@@ -1224,7 +1224,7 @@ public class CountryCodePicker extends RelativeLayout {
             if (mPhoneNumberInputValidityListener != null) {
                 boolean validity = isValid();
                 if (validity != lastValidity) {
-                    mPhoneNumberInputValidityListener.onFinish(CountryCodePicker.this, validity);
+                    mPhoneNumberInputValidityListener.onFinish(PhoneCodePicker.this, validity);
                 }
                 lastValidity = validity;
             }
@@ -1397,7 +1397,7 @@ public class CountryCodePicker extends RelativeLayout {
     }
 
     public void showCountryCodePickerDialog() {
-        if (mCountryCodeDialog == null) mCountryCodeDialog = new CountryCodeDialog(this);
+        if (mCountryCodeDialog == null) mCountryCodeDialog = new PhoneCodeDialog(this);
         mCountryCodeDialog.show();
     }
 
@@ -1412,7 +1412,7 @@ public class CountryCodePicker extends RelativeLayout {
     private void showCountryCodePickerDialogFull(){
         FragmentManager fragmentManager = ((AppCompatActivity) getContext()).getSupportFragmentManager();
         if(mCountryCodeDialogFull==null){
-            mCountryCodeDialogFull = new CountryCodeDialogFull(this);
+            mCountryCodeDialogFull = new PhoneCodeDialogFull(this);
             mCountryCodeDialogFull.show(fragmentManager,"mCountryCodeDialogFull");
         }else{
             mCountryCodeDialogFull.show(fragmentManager,"mCountryCodeDialogFull");

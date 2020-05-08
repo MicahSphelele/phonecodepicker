@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,9 +29,9 @@ import com.sphe.phonecodepicker.models.Country;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CountryCodeDialogFull extends DialogFragment  implements CountryCodeAdapter.OnCountryClickListener{
+public class PhoneCodeDialogFull extends DialogFragment  implements CountryCodeAdapter.OnCountryClickListener{
 
-    private CountryCodePicker mCountryCodePicker;
+    private PhoneCodePicker mCountryCodePicker;
     private AppCompatEditText mEdtSearch;
     private AppCompatTextView mTvNoResult;
     private AppCompatTextView mTvTitle;
@@ -45,7 +44,7 @@ public class CountryCodeDialogFull extends DialogFragment  implements CountryCod
     private CountryCodeAdapter mCountryCodeAdapter;
     private List<Country> mTempCountries;
 
-    CountryCodeDialogFull(CountryCodePicker countryCodePicker){
+    PhoneCodeDialogFull(PhoneCodePicker countryCodePicker){
         this.mCountryCodePicker=countryCodePicker;
     }
 

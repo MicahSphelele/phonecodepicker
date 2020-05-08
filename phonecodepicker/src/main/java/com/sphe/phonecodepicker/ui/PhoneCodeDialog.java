@@ -26,7 +26,7 @@ import com.sphe.phonecodepicker.models.Country;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CountryCodeDialog extends Dialog implements CountryCodeAdapter.OnCountryClickListener{
+public class PhoneCodeDialog extends Dialog implements CountryCodeAdapter.OnCountryClickListener{
 
     //private static final String TAG = "CountryCodeDialog";
 
@@ -34,7 +34,7 @@ public class CountryCodeDialog extends Dialog implements CountryCodeAdapter.OnCo
     private AppCompatTextView mTvNoResult;
     private AppCompatTextView mTvTitle;
     private RecyclerView recyclerView;
-    private CountryCodePicker mCountryCodePicker;
+    private PhoneCodePicker mCountryCodePicker;
     private RelativeLayout mRlyDialog;
 
     private List<Country> masterCountries;
@@ -43,7 +43,7 @@ public class CountryCodeDialog extends Dialog implements CountryCodeAdapter.OnCo
     private CountryCodeAdapter mCountryCodeAdapter;
     private List<Country> mTempCountries;
 
-    CountryCodeDialog(CountryCodePicker countryCodePicker) {
+    PhoneCodeDialog(PhoneCodePicker countryCodePicker) {
         super(countryCodePicker.getContext());
         mCountryCodePicker = countryCodePicker;
     }
