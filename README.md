@@ -80,7 +80,7 @@ Phone code picker will provide a proffesional and seamless look into your UI whe
 
 Library Features
 --------
-What inspired me from re-wrtting this library was this feature
+What inspired me from re-wrtting this library was these features
 
 ### 1. Dialog Mode
 * You can pick how you want to view the list from countries by using two different modes `full_dialog` or `dialog`
@@ -97,3 +97,16 @@ What inspired me from re-wrtting this library was this feature
 |   Full Dialog Mode    |   Dialog Mode           
 |---------------|---------------------------------
 |   <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/full_dialog.jpg" width="250" height="500">| <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/dialog.jpg" width="250" height="500">
+
+### 2. Dialog Adaptive OS Theme (DARK MODE) support
+ * You can set the library dialogs to adapt colors if os is using dark mode
+ * NB: this will only work on devices using API level 29> and ensure that you don't interfere with default colors when using this attribute 
+ #### A. Through xml
+ ##### Using os theme support
+ 
+ Add `app:picker_supportOSTheme="true"`
+ 
+ ####  B. Programmatically
+    ##### Using set dialog mode
+    Use `setIsSupportOSTheme(true)` method.
+    <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/dialog_dark.jpg" width="250" height="500">
