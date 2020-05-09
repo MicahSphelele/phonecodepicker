@@ -116,7 +116,8 @@ What inspired me from re-wrtting this library was these features.
    | <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/dialg_dark.jpg" width="250" height="500">
    
    ### More about features
-    * Should you feel that you need more info about the features please ref : [**CountryCodePicker**](https://github.com/joielechong/CountryCodePicker/)
+   
+  * Should you feel that you need more info about the features please ref : [**CountryCodePicker**](https://github.com/joielechong/CountryCodePicker/)
  
  ### For DexGuard users
 If your project is obfuscated with DexGuard you may need to add the following line to the DexGuard configuration:
