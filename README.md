@@ -107,6 +107,8 @@ What inspired me from re-wrtting this library was these features
  Add `app:picker_supportOSTheme="true"`
  
  ####  B. Programmatically
-    ##### Using set dialog mode
-    Use `setIsSupportOSTheme(true)` method.
+   ##### Using os theme support
+   Use `setIsSupportOSTheme(true)` method.
+   
     <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/dialog_dark.jpg" width="250" height="500">
+    
