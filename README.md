@@ -120,7 +120,5 @@ What inspired me from re-wrtting this library was these features.
  
  ### For DexGuard users
 If your project is obfuscated with DexGuard you may need to add the following line to the DexGuard configuration:
-
-      -keepresourcefiles assets/io/michaelrocks/libphonenumber/android/**
-
-This is because this library use [libphonenumber-android](https://github.com/MichaelRocks/libphonenumber-android)
+      '`-keepresourcefiles assets/io/michaelrocks/libphonenumber/android/**`
+      This is because this library use [libphonenumber-android](https://github.com/MichaelRocks/libphonenumber-android)
