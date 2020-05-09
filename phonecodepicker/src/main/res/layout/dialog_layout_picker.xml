@@ -60,13 +60,14 @@
             android:id="@+id/country_dialog_lv"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            tools:itemCount="5"
-            tools:listitem="@layout/item_country"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/search_edt"
-            />
+            app:layout_constraintVertical_bias="1.0"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_country" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/no_result_tv"
