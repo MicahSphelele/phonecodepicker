@@ -112,4 +112,4 @@ What inspired me from re-wrtting this library was these features
    
    | When OS is in dark mode
    ----------------------------------
-   | <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/dialg_dark.jpg" width="100" height="50">
+   | <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/dialg_dark.jpg" width="250" height="500">
