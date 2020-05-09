@@ -93,6 +93,14 @@ What inspired me from re-wrtting this library was these features.
    ####  B. Programmatically
     ##### Using set dialog mode
     Use `setDialogMode(PhoneCodePicker.DIALOG_MODE_DIALOG)` method.
+    
+    |   Attribute    |   method                        | Description
+|---------------|---------------------------------|-------------------------------
+|picker_defaultCode | setDefaultCountryUsingPhoneCodeAndApply(int defaultCode) |  set selected Flag and phone in CCP by phone code.
+|picker_showFullName| showFullName(boolean show) | Show full name of country in CCP. Default is false|
+|picker_hideNameCode| hideNameCode(boolean hide) | Hide the country name code. Default is false|
+|picker_hidePhoneCode| hidePhoneCode(boolean hide)| Hide the phone code. Default is false|
+|picker_DialogMode| setDialogMode(int mode)| Set fullscreen mode or dialog mode (full_dialog or dialog)
 
 |   Full Dialog Mode    |   Dialog Mode           
 |---------------|---------------------------------
@@ -110,9 +118,10 @@ What inspired me from re-wrtting this library was these features.
    ##### Using os theme support
    Use `setIsSupportOSTheme(true)` method.
    
-|    When OS is in dark mode
-   ----------------------------------
-| <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/dialg_dark.jpg" width="250" height="500">
+   |   OS in dark mode            
+|---------------|---------------------------------
+|   <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/dialg_dark.jpg" width="250" height="500">| 
+
    
    ### More about features
    
