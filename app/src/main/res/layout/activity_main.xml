@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         app:picker_supportOSTheme="true"
         app:picker_hideNameCode="true"
-        app:picker_textColor="@color/colorAccent"
+        app:picker_textColor="@color/colorPrimaryDark"
         app:picker_keyboardAutoPopOnSearch="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
