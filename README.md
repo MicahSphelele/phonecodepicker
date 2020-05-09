@@ -19,7 +19,7 @@ How to get started
     ````
 ## Phone Code Picker 
 
-Phone code picker is a simple and easy to use picker, which makes it easier to select and search for a country code for a mobile number. The library is supports API level 17 and up. The reason I wrote this library was for me to add a few new features and also implement a `RecyclerView` instead of `ListView`
+Phone code picker is a simple and easy to use picker, which makes it easier to select and search for a country code for a mobile number. The library is supports API level 17 and up. The reason I wrote this library was for me to add a few new features and also implement a `RecyclerView` instead of `ListView`. The developement of this library was inspired by  [**Joielechong**](https://github.com/joielechong/)
 
 <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/snippet.jpg" width="100" height="50">
 
@@ -80,7 +80,7 @@ Phone code picker will provide a proffesional and seamless look into your UI whe
 
 Library Features
 --------
-What inspired me from re-wrtting this library was these features
+What inspired me from re-wrtting this library was these features.
 
 ### 1. Dialog Mode
 * You can pick how you want to view the list from countries by using two different modes `full_dialog` or `dialog`
@@ -110,6 +110,17 @@ What inspired me from re-wrtting this library was these features
    ##### Using os theme support
    Use `setIsSupportOSTheme(true)` method.
    
-   | When OS is in dark mode
+   |    When OS is in dark mode
+   
    ----------------------------------
    | <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/dialg_dark.jpg" width="250" height="500">
+   
+   ### More about features
+    * Should you feel that you need more info about the features please ref : [**CountryCodePicker**](https://github.com/joielechong/CountryCodePicker/)
+ 
+ ### For DexGuard users
+If your project is obfuscated with DexGuard you may need to add the following line to the DexGuard configuration:
+
+      -keepresourcefiles assets/io/michaelrocks/libphonenumber/android/**
+
+This is because this library use [libphonenumber-android](https://github.com/MichaelRocks/libphonenumber-android)
