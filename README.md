@@ -110,5 +110,6 @@ What inspired me from re-wrtting this library was these features
    ##### Using os theme support
    Use `setIsSupportOSTheme(true)` method.
    
-    <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/dialog_dark.jpg" width="250" height="500">
-    
+   | When OS is in dark mode
+   ----------------------------------
+   | <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/dialg_dark.jpg" width="100" height="50">
