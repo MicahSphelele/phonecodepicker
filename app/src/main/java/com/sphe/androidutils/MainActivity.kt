@@ -19,8 +19,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         picker.dialogMode = PhoneCodePicker.DIALOG_MODE_DIALOG
+
         btnSwitch.isChecked = true
 
         text.text = String.format("%s | %s",picker.selectedCountryName,picker.selectedCountryCode)

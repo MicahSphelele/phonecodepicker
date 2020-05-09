@@ -26,5 +26,6 @@
             </attr>
             <!--For dialog-->
             <attr format="color" name="picker_dialogTextColor"/>
+            <attr format="boolean" name="picker_supportOSTheme"/>
         </declare-styleable>
 </resources>
