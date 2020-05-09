@@ -2,6 +2,7 @@ package com.sphe.phonecodepicker.ui;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -96,6 +97,8 @@ public class PhoneCodePicker extends RelativeLayout {
 
     private boolean mSetCountryByTimeZone = true;
 
+    private boolean isSupportOSTheme = false;
+
     private OnCountryChangeListener mOnCountryChangeListener;
 
     private PhoneCodeDialogFull mCountryCodeDialogFull;
@@ -180,14 +183,17 @@ public class PhoneCodePicker extends RelativeLayout {
             mHideNameCode = a.getBoolean(R.styleable.CountryCodePicker_picker_hideNameCode, false);
 
             mIsHintEnabled = a.getBoolean(R.styleable.CountryCodePicker_picker_enableHint, true);
+
+            //Get whether dark mode on os will be checked by app
+            setIsSupportOSTheme(a.getBoolean(R.styleable.CountryCodePicker_picker_supportOSTheme,false));
+
             //Set and Get fullscreen mode
             setDialogMode(a.getInt(R.styleable.CountryCodePicker_picker_DialogMode,0));
             //useFullScreenMode = a.getBoolean(R.styleable.CountryCodePicker_picker_useFullScreen,false);
             // enable auto formatter for phone number input
             mIsEnablePhoneNumberWatcher = a.getBoolean(R.styleable.CountryCodePicker_picker_enablePhoneAutoFormatter, true);
 
-            setKeyboardAutoPopOnSearch(
-                    a.getBoolean(R.styleable.CountryCodePicker_picker_keyboardAutoPopOnSearch, true));
+            setKeyboardAutoPopOnSearch( a.getBoolean(R.styleable.CountryCodePicker_picker_keyboardAutoPopOnSearch, true));
 
             mCustomMasterCountries = a.getString(R.styleable.CountryCodePicker_picker_customMasterCountries);
             refreshCustomMasterList();
@@ -1399,6 +1405,22 @@ public class PhoneCodePicker extends RelativeLayout {
     public void showCountryCodePickerDialog() {
         if (mCountryCodeDialog == null) mCountryCodeDialog = new PhoneCodeDialog(this);
         mCountryCodeDialog.show();
+    }
+
+    @TargetApi(29)
+    public void setIsSupportOSTheme(boolean isSupportOSTheme){
+        this.isSupportOSTheme = isSupportOSTheme;
+    }
+
+    @TargetApi(29)
+    public boolean isSupportOSTheme(){
+        return this.isSupportOSTheme;
+    }
+
+    @TargetApi(29)
+    public boolean isOsThemeDark(){
+        int osTheme = getContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        return osTheme == Configuration.UI_MODE_NIGHT_YES;
     }
 
     public void setDialogMode(int mode){

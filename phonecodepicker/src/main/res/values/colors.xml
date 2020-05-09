@@ -3,4 +3,5 @@
     <color name="defaultTextColor">@android:color/black</color>
     <color name="defaultBackgroundColor">@android:color/transparent</color>
     <color name="colorWhite">@android:color/white</color>
+    <color name="colorPickerDarkModeBackground">#303030</color>
 </resources>

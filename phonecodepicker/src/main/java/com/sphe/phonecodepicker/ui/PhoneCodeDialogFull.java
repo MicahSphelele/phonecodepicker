@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,8 @@ import java.util.List;
 
 public class PhoneCodeDialogFull extends DialogFragment  implements CountryCodeAdapter.OnCountryClickListener{
 
-    private PhoneCodePicker mCountryCodePicker;
+    private static final String TAG = "@PhoneCodeDialog";
+    private PhoneCodePicker mPhoneCodePicker;
     private AppCompatEditText mEdtSearch;
     private AppCompatTextView mTvNoResult;
     private AppCompatTextView mTvTitle;
@@ -44,8 +46,8 @@ public class PhoneCodeDialogFull extends DialogFragment  implements CountryCodeA
     private CountryCodeAdapter mCountryCodeAdapter;
     private List<Country> mTempCountries;
 
-    PhoneCodeDialogFull(PhoneCodePicker countryCodePicker){
-        this.mCountryCodePicker=countryCodePicker;
+    PhoneCodeDialogFull(PhoneCodePicker phoneCodePicker){
+        this.mPhoneCodePicker=phoneCodePicker;
     }
 
     @Override
@@ -69,7 +71,7 @@ public class PhoneCodeDialogFull extends DialogFragment  implements CountryCodeA
 
     @Override
     public void onCountryClick(Country country) {
-        mCountryCodePicker.setSelectedCountry(country);
+        mPhoneCodePicker.setSelectedCountry(country);
         mInputMethodManager.hideSoftInputFromWindow(mEdtSearch.getWindowToken(), 0);
         this.dismiss();
     }
@@ -84,6 +86,7 @@ public class PhoneCodeDialogFull extends DialogFragment  implements CountryCodeA
                 getDialog().getWindow().setLayout(width,height);
             }
         }
+        performOSThemeCheck();
     }
 
     @Override
@@ -106,42 +109,42 @@ public class PhoneCodeDialogFull extends DialogFragment  implements CountryCodeA
 
     private void setUpData() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            recyclerView.setLayoutDirection(mCountryCodePicker.getLayoutDirection());
+            recyclerView.setLayoutDirection(mPhoneCodePicker.getLayoutDirection());
         }
 
-        if (mCountryCodePicker.getTypeFace() != null) {
-            Typeface typeface = mCountryCodePicker.getTypeFace();
+        if (mPhoneCodePicker.getTypeFace() != null) {
+            Typeface typeface = mPhoneCodePicker.getTypeFace();
             mTvTitle.setTypeface(typeface);
             mEdtSearch.setTypeface(typeface);
             mTvNoResult.setTypeface(typeface);
         }
 
-        if (mCountryCodePicker.getBackgroundColor() != mCountryCodePicker.getDefaultBackgroundColor()) {
-            mRlyDialog.setBackgroundColor(mCountryCodePicker.getBackgroundColor());
+        if (mPhoneCodePicker.getBackgroundColor() != mPhoneCodePicker.getDefaultBackgroundColor()) {
+            mRlyDialog.setBackgroundColor(mPhoneCodePicker.getBackgroundColor());
         }
 
-        if (mCountryCodePicker.getDialogTextColor() != mCountryCodePicker.getDefaultContentColor()) {
-            int color = mCountryCodePicker.getDialogTextColor();
+        if (mPhoneCodePicker.getDialogTextColor() != mPhoneCodePicker.getDefaultContentColor()) {
+            int color = mPhoneCodePicker.getDialogTextColor();
             mTvTitle.setTextColor(color);
             mTvNoResult.setTextColor(color);
             mEdtSearch.setTextColor(color);
             mEdtSearch.setHintTextColor(adjustAlpha(color, 0.7f));
         }
 
-        mCountryCodePicker.refreshCustomMasterList();
-        mCountryCodePicker.refreshPreferredCountries();
-        masterCountries = mCountryCodePicker.getCustomCountries(mCountryCodePicker);
+        mPhoneCodePicker.refreshCustomMasterList();
+        mPhoneCodePicker.refreshPreferredCountries();
+        masterCountries = mPhoneCodePicker.getCustomCountries(mPhoneCodePicker);
 
         mFilteredCountries = getFilteredCountries();
         setUpListViewAdapter(recyclerView);
 
-        mInputMethodManager = (InputMethodManager) mCountryCodePicker.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        mInputMethodManager = (InputMethodManager) mPhoneCodePicker.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         setSearchBar();
     }
 
     private void setUpListViewAdapter(RecyclerView recyclerView) {
-        mCountryCodeAdapter = new CountryCodeAdapter(mFilteredCountries,mCountryCodePicker);
-        if (!mCountryCodePicker.isSelectionDialogShowSearch()) {
+        mCountryCodeAdapter = new CountryCodeAdapter(mFilteredCountries,mPhoneCodePicker);
+        if (!mPhoneCodePicker.isSelectionDialogShowSearch()) {
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
             params.height = ListView.LayoutParams.WRAP_CONTENT;
             recyclerView.setLayoutParams(params);
@@ -160,10 +163,28 @@ public class PhoneCodeDialogFull extends DialogFragment  implements CountryCodeA
     }
 
     private void setSearchBar() {
-        if (mCountryCodePicker.isSelectionDialogShowSearch()) {
+        if (mPhoneCodePicker.isSelectionDialogShowSearch()) {
             setUpTextWatcher();
         } else {
             mEdtSearch.setVisibility(View.GONE);
+        }
+    }
+
+    private void performOSThemeCheck(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
+            if(mPhoneCodePicker.isSupportOSTheme()){
+                if(mPhoneCodePicker.isOsThemeDark()){
+                    mRlyDialog.setBackgroundColor(mPhoneCodePicker.getResources().getColor(R.color.colorPickerDarkModeBackground,null));
+                    mTvTitle.setTextColor(mPhoneCodePicker.getResources().getColor(R.color.colorWhite,null));
+                    mEdtSearch.setHintTextColor(mPhoneCodePicker.getResources().getColor(R.color.colorWhite,null));
+                    mEdtSearch.setBackgroundResource(R.drawable.edit_txt_border_white);
+                    mEdtSearch.setTextColor(mPhoneCodePicker.getResources().getColor(R.color.colorWhite,null));
+                }else{
+                    Log.d(TAG,"OS NOT IN DARK MODE");
+                }
+            }else{
+                Log.d(TAG,"OS DARK MODE CHECK NOT SUPPORT");
+            }
         }
     }
 
@@ -178,7 +199,7 @@ public class PhoneCodeDialogFull extends DialogFragment  implements CountryCodeA
             mTempCountries.clear();
         }
 
-        List<Country> preferredCountries = mCountryCodePicker.getPreferredCountries();
+        List<Country> preferredCountries = mPhoneCodePicker.getPreferredCountries();
         if (preferredCountries != null && preferredCountries.size() > 0) {
             for (Country country : preferredCountries) {
                 if (country.isEligibleForQuery(query)) {
@@ -240,7 +261,7 @@ public class PhoneCodeDialogFull extends DialogFragment  implements CountryCodeA
             }
         });
 
-        if (mCountryCodePicker.isKeyboardAutoPopOnSearch()) {
+        if (mPhoneCodePicker.isKeyboardAutoPopOnSearch()) {
             if (mInputMethodManager != null) {
                 mInputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
             }
