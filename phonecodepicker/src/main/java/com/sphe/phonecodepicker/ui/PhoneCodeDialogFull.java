@@ -1,17 +1,22 @@
 package com.sphe.phonecodepicker.ui;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
@@ -19,10 +24,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.sphe.phonecodepicker.R;
 import com.sphe.phonecodepicker.adapters.CountryCodeAdapter;
 import com.sphe.phonecodepicker.models.Country;
@@ -30,7 +37,7 @@ import com.sphe.phonecodepicker.models.Country;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PhoneCodeDialogFull extends DialogFragment  implements CountryCodeAdapter.OnCountryClickListener{
+public class PhoneCodeDialogFull extends BottomSheetDialogFragment implements CountryCodeAdapter.OnCountryClickListener{
 
     private static final String TAG = "@PhoneCodeDialog";
     private PhoneCodePicker mPhoneCodePicker;
@@ -53,7 +60,21 @@ public class PhoneCodeDialogFull extends DialogFragment  implements CountryCodeA
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(DialogFragment.STYLE_NORMAL, R.style.FullScreenDialogStyle);
+        //setStyle(DialogFragment.STYLE_NORMAL, R.style.FullScreenDialogStyle);
+    }
+
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        Dialog dialog = super.onCreateDialog(savedInstanceState);
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                BottomSheetDialog bottomSheetDialog = (BottomSheetDialog) dialogInterface;
+                setupFullHeight(bottomSheetDialog);
+            }
+        });
+        return dialog;
     }
 
     @Nullable
@@ -79,23 +100,23 @@ public class PhoneCodeDialogFull extends DialogFragment  implements CountryCodeA
     @Override
     public void onStart() {
         super.onStart();
-        int width = ViewGroup.LayoutParams.MATCH_PARENT;
-        int height = ViewGroup.LayoutParams.MATCH_PARENT;
-        if(getDialog()!=null){
-            if(getDialog().getWindow()!=null){
-                getDialog().getWindow().setLayout(width,height);
-            }
-        }
+//        int width = ViewGroup.LayoutParams.MATCH_PARENT;
+//        int height = ViewGroup.LayoutParams.MATCH_PARENT;
+//        if(getDialog()!=null){
+//            if(getDialog().getWindow()!=null){
+//                getDialog().getWindow().setLayout(width,height);
+//            }
+//        }
         performOSThemeCheck();
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if(getDialog()!=null){
-            if(getDialog().getWindow()!=null)
-            getDialog().getWindow().getAttributes().windowAnimations = R.style.FullScreenDialogStyle;
-        }
+//        if(getDialog()!=null){
+//            if(getDialog().getWindow()!=null)
+//            getDialog().getWindow().getAttributes().windowAnimations = R.style.FullScreenDialogStyle;
+//        }
     }
 
     private void setUpUI(View v) {
@@ -266,5 +287,30 @@ public class PhoneCodeDialogFull extends DialogFragment  implements CountryCodeA
                 mInputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
             }
         }
+    }
+
+    private void setupFullHeight(BottomSheetDialog bottomSheetDialog) {
+        FrameLayout bottomSheet = (FrameLayout) bottomSheetDialog.findViewById(R.id.design_bottom_sheet);
+        if(bottomSheet!=null){
+            BottomSheetBehavior behavior = BottomSheetBehavior.from(bottomSheet);
+            ViewGroup.LayoutParams layoutParams = bottomSheet.getLayoutParams();
+
+            int windowHeight = getWindowHeight();
+            if (layoutParams != null) {
+                layoutParams.height = windowHeight;
+            }
+            bottomSheet.setLayoutParams(layoutParams);
+            behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        }
+    }
+
+    private int getWindowHeight() {
+        // Calculate window height for fullscreen use
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        if((getContext())!=null){
+            ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        }
+
+        return displayMetrics.heightPixels;
     }
 }
