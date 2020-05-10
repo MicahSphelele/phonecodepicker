@@ -200,6 +200,7 @@ public class PhoneCodeDialogFull extends BottomSheetDialogFragment implements Co
                     mEdtSearch.setHintTextColor(mPhoneCodePicker.getResources().getColor(R.color.colorWhite,null));
                     mEdtSearch.setBackgroundResource(R.drawable.edit_txt_border_white);
                     mEdtSearch.setTextColor(mPhoneCodePicker.getResources().getColor(R.color.colorWhite,null));
+                    mTvNoResult.setTextColor(mPhoneCodePicker.getResources().getColor(R.color.colorWhite,null));
                 }else{
                     Log.d(TAG,"OS NOT IN DARK MODE");
                 }
