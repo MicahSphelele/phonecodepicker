@@ -38,7 +38,7 @@ Phone code picker will provide a proffesional and seamless look into your UI whe
  2. Add picker to layout using the following:
 
      ````xml
-     <om.sphe.phonecodepicker.ui.PhoneCodePicker
+     <com.sphe.phonecodepicker.ui.PhoneCodePicker
            android:id="@+id/picker"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content" />
