@@ -1,12 +1,19 @@
-# Android Utils
+# Android Phone Code Picker
 <p align="center">
   <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/android_logo.png" width="100" height="100">
 </p>
-An open source experimental repository for android libraries that will be compatible with Java and Kotlin  
+An open source  android libraries that is compatible with Java and Kotlin  
 
-How to get started 
---------------
+Phone code picker is a simple and easy to use picker, which makes it easier to select and search for a country code for a mobile number. The library is supports API level 17 and up. The reason I wrote this library was for me to add a few new features and also implement a `RecyclerView` instead of `ListView`. The developement of this library was inspired by  [**Joielechong**](https://github.com/joielechong/)
 
+<img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/snippet.jpg" width="100" height="50">
+
+Phone code picker will provide a proffesional and seamless look into your UI whether you want to use it for a sign up screen or a sign screen. 
+
+<img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/snippet_edit.jpg" width="300" height="90">
+
+
+### How to add to project 
 1. Add jitpack.io to your root build.gradle file:
 
     ````groovy
@@ -17,25 +24,15 @@ How to get started
         }
     }
     ````
-## Phone Code Picker 
-
-Phone code picker is a simple and easy to use picker, which makes it easier to select and search for a country code for a mobile number. The library is supports API level 17 and up. The reason I wrote this library was for me to add a few new features and also implement a `RecyclerView` instead of `ListView`. The developement of this library was inspired by  [**Joielechong**](https://github.com/joielechong/)
-
-<img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/snippet.jpg" width="100" height="50">
-
-Phone code picker will provide a proffesional and seamless look into your UI whether you want to use it for a sign up screen or a sign screen. 
-
-<img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/phonepicker/snippet_edit.jpg" width="300" height="90">
-
-### How to add to project 
-1. Add library to your project build.gradle file and then sync 
+    
+2. Add library to your project build.gradle file and then sync 
 ````groovy
 	dependencies {
 	   implementation 'com.github.MicahSphelele:android-utils:1.1.1'
 	}
 ````
 
- 2. Add picker to layout using the following:
+ 3. Add picker to layout using the following:
 
      ````xml
      <com.sphe.phonecodepicker.ui.PhoneCodePicker
@@ -43,7 +40,7 @@ Phone code picker will provide a proffesional and seamless look into your UI whe
            android:layout_width="wrap_content"
            android:layout_height="wrap_content" />
      ````
- 3. Add EditText/AppCompatEditText view to layout:
+ 4. Add EditText/AppCompatEditText view to layout:
 
      ````xml
      <androidx.appcompat.widget.AppCompatEditText
@@ -53,7 +50,7 @@ Phone code picker will provide a proffesional and seamless look into your UI whe
             android:hint="phone"
             android:inputType="phone"/>
      ````
-4. Register the EditText/AppCompatEditText with code:
+5. Register the EditText/AppCompatEditText with code:
 
    ```java
    CountryCodePicker picker;
