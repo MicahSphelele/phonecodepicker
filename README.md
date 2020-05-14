@@ -2,7 +2,8 @@
 <p align="center">
   <img src="https://github.com/MicahSphelele/android-utils/blob/master/pics/android_logo.png" width="100" height="100">
 </p>
-An open source  android libraries that is compatible with Java and Kotlin  
+
+An open source android library that is compatible with Java and Kotlin  
 
 Phone code picker is a simple and easy to use picker, which makes it easier to select and search for a country code for a mobile number. The library is supports API level 17 and up. The reason I wrote this library was for me to add a few new features and also implement a `RecyclerView` instead of `ListView`. The developement of this library was inspired by  [**Joielechong**](https://github.com/joielechong/)
 
